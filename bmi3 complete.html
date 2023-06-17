@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><script>
+    // Test data
+const dolphinsScores = [96, 108, 89];
+const koalasScores = [88, 91, 110];
+
+// Calculate average scores
+const dolphinsAvgScore = dolphinsScores.reduce((acc, score) => acc + score, 0) / dolphinsScores.length;
+const koalasAvgScore = koalasScores.reduce((acc, score) => acc + score, 0) / koalasScores.length;
+
+// Print average scores
+document.write(`Dolphins' average score: ${dolphinsAvgScore}`);
+document.write(`Koalas' average score: ${koalasAvgScore}`);
+
+// Compare average scores to determine the winner
+if (dolphinsAvgScore > koalasAvgScore && dolphinsAvgScore >= 100) {
+    document.write("Dolphins win!");
+} else if (koalasAvgScore > dolphinsAvgScore && koalasAvgScore >= 100) {
+    document.write("Koalas win!");
+} else if (dolphinsAvgScore === koalasAvgScore && dolphinsAvgScore >= 100 && koalasAvgScore >= 100) {
+    document.write("It's a draw!");
+} else {
+    document.write("No team wins the trophy.");
+}
+
+// Test data for Bonus 1
+const dolphinsScoresBonus1 = [97, 112, 101];
+const koalasScoresBonus1 = [109, 95, 123];
+
+// Calculate average scores
+const dolphinsAvgScoreBonus1 = dolphinsScoresBonus1.reduce((acc, score) => acc + score, 0) / dolphinsScoresBonus1.length;
+const koalasAvgScoreBonus1 = koalasScoresBonus1.reduce((acc, score) => acc + score, 0) / koalasScoresBonus1.length;
+
+// Print average scores
+document.write(`Dolphins' average score: ${dolphinsAvgScoreBonus1}`);
+document.write(`Koalas' average score: ${koalasAvgScoreBonus1}`);
+
+// Compare average scores to determine the winner with minimum score of 100
+if (dolphinsAvgScoreBonus1 > koalasAvgScoreBonus1 && dolphinsAvgScoreBonus1 >= 100) {
+    document.write("Dolphins win!");
+} else if (koalasAvgScoreBonus1 > dolphinsAvgScoreBonus1 && koalasAvgScoreBonus1 >= 100) {
+    document.write("Koalas win!");
+} else if (dolphinsAvgScoreBonus1 === koalasAvgScoreBonus1 && dolphinsAvgScoreBonus1 >= 100 && koalasAvgScoreBonus1 >= 100) {
+    document.write("It's a draw!");
+} else {
+    document.write("No team wins the trophy.");
+}
+
+// Test data for Bonus 2
+const dolphinsScoresBonus2 = [97, 112, 101];
+const koalasScoresBonus2 = [109, 95, 106];
+
+// Calculate average scores
+const dolphinsAvgScoreBonus2 = dolphinsScoresBonus2.reduce((acc, score) => acc + score, 0) / dolphinsScoresBonus2.length;
+const koalasAvgScoreBonus2 = koalasScoresBonus2.reduce((acc, score) => acc + score, 0) / koalasScoresBonus2.length;
+
+// Print average scores
+document.write(`Dolphins' average score: ${dolphinsAvgScoreBonus2}`);
+document.write(`Koalas' average score: ${koalasAvgScoreBonus2}`);
+</script>
+    
+</body>
+</html>
