@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="javascriptreact">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Basic Task Management Application</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    form {
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #555;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Task Management App</h1>
+  </header>
+
+  <main>
+    <form id="taskForm">
+      <input type="text" id="taskInput" placeholder="Enter task...">
+      <input type="submit" value="Add Task">
+    </form>
+
+    <ul id="taskList">
+      <!-- Existing tasks will be dynamically added here -->
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Task Management App</p>
+  </footer>
+
+  <script>
+    // Get references to HTML elements
+    const taskForm = document.getElementById('taskForm');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    // Load tasks from local storage
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    // Function to render tasks
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${task}</span>
+          <button class="completeButton" data-index="${index}">Complete</button>
+          <button class="deleteButton" data-index="${index}">Delete</button>
+        `;
+        taskList.appendChild(li);
+      });
+    }
+
+    // Render tasks when the page loads
+    renderTasks();
+
+    // Add task event listener
+    taskForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const newTask = taskInput.value.trim();
+      if (newTask !== '') {
+        tasks.push(newTask);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        renderTasks();
+        taskInput.value = '';
+      }
+    });
+
+    // Complete task event listener
+    taskList.addEventListener('click', function(event) {
+      if (event.target.classList.contains('completeButton')) {
+        const index = event.target.getAttribute('data-index');
+        tasks.splice(index, 1);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        renderTasks();
+      }
+    });
+
+    // Delete task event listener
+    taskList.addEventListener('click', function(event) {
+      if (event.target.classList.contains('deleteButton')) {
+        const index = event.target.getAttribute('data-index');
+        tasks.splice(index, 1);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        renderTasks();
+      }
+    });
+  </script>
+</body>
+</html>
+
+    
+</body>
+</html>
